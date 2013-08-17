@@ -109,8 +109,8 @@ and under what circumstances to call it.</li>
 <p>The register function takes 4 parameters:</p>
 <ol>
 <li>workflow types, an array of strings. Pick one-to-many types depending on the
-sort of task your module accomplishes. Possible values: buildFile, buildExtension,
-postBuild, add, update, remove.</li>
+sort of task your module accomplishes. Possible values: preBuild, buildFile,
+buildExtension, postBuild, add, update, remove, preClean, cleanFile and postClean.</li>
 <li>workflow step, a string. A workflow step for the selected workflow types.  For
 example, for the type &#39;update&#39;, you might choose to have your module code executed
 &#39;afterCompile&#39;, which makes sense for this example.  To help you figure out which
