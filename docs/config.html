@@ -143,8 +143,8 @@ up to ensure the configuration has been set properly.</p>
             
             <div class="content"><div class='highlight'><pre>exports.validate = <span class="keyword">function</span>(config, validators) {
   <span class="keyword">var</span> errors = [];
-  <span class="keyword">if</span> validators.ifExistsIsObject(errors, <span class="string">"minify config"</span>, config.minify) {
-    <span class="keyword">if</span> validators.ifExistsIsArray(errors, <span class="string">"minify.exclude"</span>, config.minify.exclude) {
+  <span class="keyword">if</span> (validators.ifExistsIsObject(errors, <span class="string">"minify config"</span>, config.minify) {
+    <span class="keyword">if</span> (validators.ifExistsIsArray(errors, <span class="string">"minify.exclude"</span>, config.minify.exclude) {
       <span class="keyword">var</span> exls = config.minify.exclude;
       <span class="keyword">for</span> (<span class="keyword">var</span> _i = <span class="number">0</span>, _len = exls.length; _i &lt; _len; _i++) {
         <span class="keyword">var</span> ex = exls[_i];

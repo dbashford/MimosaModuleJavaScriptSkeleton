@@ -48,8 +48,8 @@ exports.placeholder = function() {
 
 exports.validate = function(config, validators) {
   var errors = [];
-  if validators.ifExistsIsObject(errors, "minify config", config.minify) {
-    if validators.ifExistsIsArray(errors, "minify.exclude", config.minify.exclude) {
+  if (validators.ifExistsIsObject(errors, "minify config", config.minify) {
+    if (validators.ifExistsIsArray(errors, "minify.exclude", config.minify.exclude) {
       var exls = config.minify.exclude;
       for (var _i = 0, _len = exls.length; _i < _len; _i++) {
         var ex = exls[_i];
