@@ -26,8 +26,8 @@ var config = require('./config');
 // The register function takes 4 parameters:
 //
 // 1. workflow types, an array of strings. Pick one-to-many types depending on the
-// sort of task your module accomplishes. Possible values: buildFile, buildExtension,
-// postBuild, add, update, remove.
+// sort of task your module accomplishes. Possible values: preBuild, buildFile,
+// buildExtension, postBuild, add, update, remove, preClean, cleanFile and postClean.
 // 2. workflow step, a string. A workflow step for the selected workflow types.  For
 // example, for the type 'update', you might choose to have your module code executed
 // 'afterCompile', which makes sense for this example.  To help you figure out which
