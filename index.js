@@ -31,7 +31,7 @@ var config = require('./config');
 // 2. workflow step, a string. A workflow step for the selected workflow types.  For
 // example, for the type 'update', you might choose to have your module code executed
 // 'afterCompile', which makes sense for this example.  To help you figure out which
-// step you might want to use, visit the <a href="http://mimosajs.com/utilities.html">modules</a>
+// step you might want to use, visit the <a href="http://mimosa.io/utilities.html">modules</a>
 // page on the website.
 // 3. The callback function.  The code to be executed during a Mimosa workflow.
 // 4. An optional array of extensions upon which to execute the callback. If the file or

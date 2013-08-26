@@ -14,7 +14,7 @@ Your Module's Name Here
 
 ## Overview
 
-For more information regarding Mimosa, see http://mimosajs.com
+For more information regarding Mimosa, see http://mimosa.io
 
 ## Usage
 
