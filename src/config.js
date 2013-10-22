@@ -4,7 +4,7 @@
 // The code contained herein is all example code and shouldn't be used verbatim.
 // The example in this case is modified from the mimosa-minify module.
 
-"use strict"
+"use strict";
 
 // The defaults function should return a JSON object containing the default
 // config for your module. If your module has no config, the function can be

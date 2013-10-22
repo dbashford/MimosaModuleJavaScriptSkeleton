@@ -3,7 +3,7 @@
 
 // The code contained herein is all example code and shouldn't be used verbatim.
 // The example in this case is modified from the mimosa-minify module.
-"use strict"
+"use strict";
 
 // Pulling in the <a href="./config.html">configuration management</a> code that is a
 // part of the module.
@@ -77,7 +77,7 @@ var registration = function(mimosaConfig, register) {
 var _minifyJS = function(mimosaConfig, options, next) {
   options.files.forEach(function(file) {
     file.outputFileText = minify(file.outputFileText);
-  })
+  });
   next();
 };
 
