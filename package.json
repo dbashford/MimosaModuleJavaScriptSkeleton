@@ -19,9 +19,7 @@
     "mmodule",
     "ADD MORE KEYWORDS TO HELP PEOPLE FIND YOUR MODULE ON NPM"
   ],
-  "dependencies": {
-    "logmimosa": "0.6.0"
-  },
+  "dependencies": {},
   "license": "MIT",
   "engines": {
     "node": ">=0.10"

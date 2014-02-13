@@ -1,5 +1,5 @@
 exports.config =
-  modules: ["jshint"]
+  modules: ["jshint", "copy"]
   watch:
     sourceDir: "src"
     compiledDir: "lib"
@@ -7,3 +7,4 @@ exports.config =
   jshint:
     rules:
       node: true
+      laxcomma: true

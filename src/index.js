@@ -7,7 +7,8 @@
 
 // Pulling in the <a href="./config.html">configuration management</a> code that is a
 // part of the module.
-var config = require('./config');
+var config = require('./config')
+  , logger = null;
 
 // The registration function is the key part of your module.  This function is called
 // during Mimosa's startup and it allows your module to bind to one or many steps
@@ -47,6 +48,10 @@ var config = require('./config');
 
 var registration = function(mimosaConfig, register) {
   if (config.isMinify) {
+
+    // Pull the logger out for future use
+    logger = mimosaConfig.log;
+
     var e = mimosaConfig.extensions;
     var slice = [].slice;
     register(['add', 'update', 'buildFile'], 'afterCompile', _minifyJS, slice.call(e.javascript));

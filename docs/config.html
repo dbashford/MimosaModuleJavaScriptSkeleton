@@ -45,10 +45,10 @@
         <li id="section-1">
             <div class="annotation">
               
-              <div class="pilwrap for-h2">
+              <div class="pilwrap ">
                 <a class="pilcrow" href="#section-1">&#182;</a>
               </div>
-              <h2>Module Configuration</h2>
+              <h2 id="module-configuration">Module Configuration</h2>
 
             </div>
             
@@ -61,12 +61,8 @@
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-2">&#182;</a>
               </div>
-              <p>The code contained herein is all example code and shouldn&#39;t be used verbatim.
-The example in this case is modified from the mimosa-minify module.</p>
-
+              
             </div>
-            
-            <div class="content"><div class='highlight'><pre><span class="string">"use strict"</span></pre></div></div>
             
         </li>
         
@@ -77,20 +73,13 @@ The example in this case is modified from the mimosa-minify module.</p>
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-3">&#182;</a>
               </div>
-              <p>The defaults function should return a JSON object containing the default
-config for your module. If your module has no config, the function can be
-removed or return null. Mimosa uses this function when applying default
-configuration to a user&#39;s config.</p>
+              <p>The code contained herein is all example code and shouldn’t be used verbatim.
+The example in this case is modified from the mimosa-minify module.</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>exports.defaults = <span class="keyword">function</span>() {
-  <span class="keyword">return</span> {
-    minify: {
-      exclude: [<span class="regexp">/\.min\./</span>]
-    }
-  };
-};</pre></div></div>
+            <div class="content"><div class='highlight'><pre><span class="hljs-pi">
+"use strict"</span>;</pre></div></div>
             
         </li>
         
@@ -101,24 +90,20 @@ configuration to a user&#39;s config.</p>
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-4">&#182;</a>
               </div>
-              <p>The placeholder function should return a string that represents the
-mimosa-config placeholder for your configuration defaults including
-explanations for each config setting where appropriate.  The content
-of the string should be all commented out. If you have no config,
-the function can be removed or can return null.  This function is called
-when Mimosa is creating an initial mimosa-config using &#39;mimosa new&#39; or
-&#39;mimosa config&#39;</p>
+              <p>The defaults function should return a JSON object containing the default
+config for your module. If your module has no config, the function can be
+removed or return null. Mimosa uses this function when applying default
+configuration to a user’s config.</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>exports.placeholder = <span class="keyword">function</span>() {
-  <span class="keyword">return</span> <span class="string">"\t\n\n"</span>+
-         <span class="string">"  # minify:                    # Configuration for non-require minification/compression via uglify\n"</span> +
-         <span class="string">"                               # using the --minify flag.\n"</span> +
-         <span class="string">"    # exclude:[/\\.min\\./]     # List of regexes to exclude files when running minification.\n"</span> +
-         <span class="string">"                               # Any path with \".min.\" in its name, like jquery.min.js, is assumed to\n"</span> +
-         <span class="string">"                               # already be minified and is ignored by default. Override this property\n"</span> +
-         <span class="string">"                               # if you have other files that you'd like to exempt from minification."</span>;
+            <div class="content"><div class='highlight'><pre>
+exports.defaults = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> {</span>
+  <span class="hljs-keyword">return</span> {
+    minify: {
+      exclude: [<span class="hljs-regexp">/\.min\./</span>]
+    }
+  };
 };</pre></div></div>
             
         </li>
@@ -129,6 +114,36 @@ when Mimosa is creating an initial mimosa-config using &#39;mimosa new&#39; or
               
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-5">&#182;</a>
+              </div>
+              <p>The placeholder function should return a string that represents the
+mimosa-config placeholder for your configuration defaults including
+explanations for each config setting where appropriate.  The content
+of the string should be all commented out. If you have no config,
+the function can be removed or can return null.  This function is called
+when Mimosa is creating an initial mimosa-config using ‘mimosa new’ or
+‘mimosa config’</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>
+exports.placeholder = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> {</span>
+  <span class="hljs-keyword">return</span> <span class="hljs-string">"\t\n\n"</span>+
+         <span class="hljs-string">"  # minify:                    # Configuration for non-require minification/compression via uglify\n"</span> +
+         <span class="hljs-string">"                               # using the --minify flag.\n"</span> +
+         <span class="hljs-string">"    # exclude:[/\\.min\\./]     # List of regexes to exclude files when running minification.\n"</span> +
+         <span class="hljs-string">"                               # Any path with \".min.\" in its name, like jquery.min.js, is assumed to\n"</span> +
+         <span class="hljs-string">"                               # already be minified and is ignored by default. Override this property\n"</span> +
+         <span class="hljs-string">"                               # if you have other files that you'd like to exempt from minification."</span>;
+};</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-6">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-6">&#182;</a>
               </div>
               <p>The validate function takes a config object (which is the entire
 mimosa-config) and a validators object which contains several useful
@@ -141,16 +156,17 @@ up to ensure the configuration has been set properly.</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>exports.validate = <span class="keyword">function</span>(config, validators) {
-  <span class="keyword">var</span> errors = [];
-  <span class="keyword">if</span> (validators.ifExistsIsObject(errors, <span class="string">"minify config"</span>, config.minify)) {
-    <span class="keyword">if</span> (validators.ifExistsIsArray(errors, <span class="string">"minify.exclude"</span>, config.minify.exclude)) {
-      <span class="keyword">var</span> exls = config.minify.exclude;
-      <span class="keyword">for</span> (<span class="keyword">var</span> _i = <span class="number">0</span>, _len = exls.length; _i &lt; _len; _i++) {
-        <span class="keyword">var</span> ex = exls[_i];
-        <span class="keyword">if</span> (<span class="keyword">typeof</span> ex !== <span class="string">"string"</span>) {
-          errors.push(<span class="string">"minify.exclude must be an array of strings"</span>);
-          <span class="keyword">break</span>;
+            <div class="content"><div class='highlight'><pre>
+exports.validate = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(config, validators)</span> {</span>
+  <span class="hljs-keyword">var</span> errors = [];
+  <span class="hljs-keyword">if</span> (validators.ifExistsIsObject(errors, <span class="hljs-string">"minify config"</span>, config.minify)) {
+    <span class="hljs-keyword">if</span> (validators.ifExistsIsArray(errors, <span class="hljs-string">"minify.exclude"</span>, config.minify.exclude)) {
+      <span class="hljs-keyword">var</span> exls = config.minify.exclude;
+      <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> _i = <span class="hljs-number">0</span>, _len = exls.length; _i &lt; _len; _i++) {
+        <span class="hljs-keyword">var</span> ex = exls[_i];
+        <span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> ex !== <span class="hljs-string">"string"</span>) {
+          errors.push(<span class="hljs-string">"minify.exclude must be an array of strings"</span>);
+          <span class="hljs-keyword">break</span>;
         }
       }
     }
@@ -159,11 +175,11 @@ up to ensure the configuration has been set properly.</p>
         </li>
         
         
-        <li id="section-6">
+        <li id="section-7">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-6">&#182;</a>
+                <a class="pilcrow" href="#section-7">&#182;</a>
               </div>
               <p>The validate function is also an opportunity to do configuration massaging,
 for instance, turning a list of strings into a single RegExp.  Changes
@@ -172,11 +188,12 @@ the currently running Mimosa process.</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>  <span class="keyword">if</span> (errors.length === <span class="number">0</span> &amp;&amp; config.minify.exclude &amp;&amp; config.minify.exclude.length &gt; <span class="number">0</span>) {
-    config.minify.exclude = <span class="keyword">new</span> RegExp(config.minify.exclude.join(<span class="string">"|"</span>), <span class="string">"i"</span>);
+            <div class="content"><div class='highlight'><pre>
+  <span class="hljs-keyword">if</span> (errors.length === <span class="hljs-number">0</span> &amp;&amp; config.minify.exclude &amp;&amp; config.minify.exclude.length &gt; <span class="hljs-number">0</span>) {
+    config.minify.exclude = <span class="hljs-keyword">new</span> <span class="hljs-built_in">RegExp</span>(config.minify.exclude.join(<span class="hljs-string">"|"</span>), <span class="hljs-string">"i"</span>);
   }
 
-  <span class="keyword">return</span> errors;
+  <span class="hljs-keyword">return</span> errors;
 };</pre></div></div>
             
         </li>
