@@ -19,6 +19,7 @@
     "mmodule",
     "ADD MORE KEYWORDS TO HELP PEOPLE FIND YOUR MODULE ON NPM"
   ],
+  "main": "./src",
   "dependencies": {},
   "license": "MIT",
   "engines": {
