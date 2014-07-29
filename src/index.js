@@ -95,14 +95,19 @@ var _minifyJS = function(mimosaConfig, options, next) {
 // Use this object to create a command, the flags for it, any input values, the help text and the callback
 // for the command.
 // 2. retrieveConfig, a function, use retrieveConfig to have Mimosa execute a build and get the mimosa-config
-// before a module's code is executed.  retrieveConfig takes two parameters, the first is a flag to indicate
-// if a build is needed before module code is executed.  The second is a callback that should contain the
+// before a module's code is executed.  retrieveConfig takes two parameters, the first is an object to which
+// can include build flags. buildFirst forces Mimosa to run a build before the command is executed.  mdebug
+// will force mimosa to run in debug mode.  You can also pass a run profile via the ops.
+// Ex: opts.profile = "profile-name". The second retrieveConfig parameter is a callback that should contain the
 // module's functionality.  That callback is passed the mimosa-config.
 
 var registerCommand = function(program, retrieveConfig) {
   program.command('foo').description("Do something fooey").action(function() {
-    retrieveConfig(false, function(config) {
 
+    opts.buildFirst = false;
+    opts.mdebug = false;
+    retrieveConfig( opts, function( mimosaConfig ) {
+      // Here is where your module's functionality would be executed
     });
   });
 };

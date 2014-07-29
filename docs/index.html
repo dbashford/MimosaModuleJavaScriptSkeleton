@@ -145,7 +145,7 @@ through the module.</li>
             </div>
             
             <div class="content"><div class='highlight'><pre>
-<span class="hljs-keyword">var</span> registration = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(mimosaConfig, register)</span> {</span>
+<span class="hljs-keyword">var</span> registration = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(mimosaConfig, register)</span> </span>{
   <span class="hljs-keyword">if</span> (config.isMinify) {</pre></div></div>
             
         </li>
@@ -202,8 +202,8 @@ tells Mimosa to execute the next step in the workflow.</li>
             </div>
             
             <div class="content"><div class='highlight'><pre>
-<span class="hljs-keyword">var</span> _minifyJS = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(mimosaConfig, options, next)</span> {</span>
-  options.files.forEach(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(file)</span> {</span>
+<span class="hljs-keyword">var</span> _minifyJS = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(mimosaConfig, options, next)</span> </span>{
+  options.files.forEach(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(file)</span> </span>{
     file.outputFileText = minify(file.outputFileText);
   });
   next();
@@ -226,21 +226,22 @@ Mimosa will call it during startup so the module has an opportunity to respond t
 Use this object to create a command, the flags for it, any input values, the help text and the callback
 for the command.</li>
 <li>retrieveConfig, a function, use retrieveConfig to have Mimosa execute a build and get the mimosa-config
-before a module’s code is executed.  retrieveConfig takes two parameters, the first is a flag to indicate
-if a build is needed before module code is executed.  The second is a callback that should contain the
+before a module’s code is executed.  retrieveConfig takes two parameters, the first is an object to which
+can include build flags. buildFirst forces Mimosa to run a build before the command is executed.  mdebug
+will force mimosa to run in debug mode.  You can also pass a run profile via the ops.
+Ex: opts.profile = “profile-name”. The second retrieveConfig parameter is a callback that should contain the
 module’s functionality.  That callback is passed the mimosa-config.</li>
 </ol>
 
             </div>
             
             <div class="content"><div class='highlight'><pre>
-<span class="hljs-keyword">var</span> registerCommand = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(program, retrieveConfig)</span> {</span>
-  program.command(<span class="hljs-string">'foo'</span>).description(<span class="hljs-string">"Do something fooey"</span>).action(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> {</span>
-    retrieveConfig(<span class="hljs-literal">false</span>, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(config)</span> {</span>
+<span class="hljs-keyword">var</span> registerCommand = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(program, retrieveConfig)</span> </span>{
+  program.command(<span class="hljs-string">'foo'</span>).description(<span class="hljs-string">"Do something fooey"</span>).action(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> </span>{
 
-    });
-  });
-};</pre></div></div>
+    opts.buildFirst = <span class="hljs-literal">false</span>;
+    opts.mdebug = <span class="hljs-literal">false</span>;
+    retrieveConfig( opts, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">( mimosaConfig )</span> </span>{</pre></div></div>
             
         </li>
         
@@ -250,6 +251,23 @@ module’s functionality.  That callback is passed the mimosa-config.</li>
               
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-9">&#182;</a>
+              </div>
+              <p>Here is where your module’s functionality would be executed</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    });
+  });
+};</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-10">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-10">&#182;</a>
               </div>
               <p>The module.exports exposes module code to Mimosa.  The properties that
 are exported are Mimosa’s hook to your module.  Mimosa will attempt
@@ -271,7 +289,7 @@ multiple modules that need to talk to one another.</p>
             </div>
             
             <div class="content"><div class='highlight'><pre>
-module.exports = {
+<span class="hljs-built_in">module</span>.exports = {
   registration: registration,
   registerCommand: registerCommand,
   defaults: config.defaults,

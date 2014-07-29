@@ -98,7 +98,7 @@ configuration to a user’s config.</p>
             </div>
             
             <div class="content"><div class='highlight'><pre>
-exports.defaults = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> {</span>
+exports.defaults = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> </span>{
   <span class="hljs-keyword">return</span> {
     minify: {
       exclude: [<span class="hljs-regexp">/\.min\./</span>]
@@ -126,7 +126,7 @@ when Mimosa is creating an initial mimosa-config using ‘mimosa new’ or
             </div>
             
             <div class="content"><div class='highlight'><pre>
-exports.placeholder = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> {</span>
+exports.placeholder = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> </span>{
   <span class="hljs-keyword">return</span> <span class="hljs-string">"\t\n\n"</span>+
          <span class="hljs-string">"  # minify:                    # Configuration for non-require minification/compression via uglify\n"</span> +
          <span class="hljs-string">"                               # using the --minify flag.\n"</span> +
@@ -157,7 +157,7 @@ up to ensure the configuration has been set properly.</p>
             </div>
             
             <div class="content"><div class='highlight'><pre>
-exports.validate = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(config, validators)</span> {</span>
+exports.validate = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(config, validators)</span> </span>{
   <span class="hljs-keyword">var</span> errors = [];
   <span class="hljs-keyword">if</span> (validators.ifExistsIsObject(errors, <span class="hljs-string">"minify config"</span>, config.minify)) {
     <span class="hljs-keyword">if</span> (validators.ifExistsIsArray(errors, <span class="hljs-string">"minify.exclude"</span>, config.minify.exclude)) {
