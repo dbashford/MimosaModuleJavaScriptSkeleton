@@ -115,36 +115,6 @@ exports.defaults = <span class="hljs-function"><span class="hljs-keyword">functi
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-5">&#182;</a>
               </div>
-              <p>The placeholder function should return a string that represents the
-mimosa-config placeholder for your configuration defaults including
-explanations for each config setting where appropriate.  The content
-of the string should be all commented out. If you have no config,
-the function can be removed or can return null.  This function is called
-when Mimosa is creating an initial mimosa-config using ‘mimosa new’ or
-‘mimosa config’</p>
-
-            </div>
-            
-            <div class="content"><div class='highlight'><pre>
-exports.placeholder = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> </span>{
-  <span class="hljs-keyword">return</span> <span class="hljs-string">"\t\n\n"</span>+
-         <span class="hljs-string">"  # minify:                    # Configuration for non-require minification/compression via uglify\n"</span> +
-         <span class="hljs-string">"                               # using the --minify flag.\n"</span> +
-         <span class="hljs-string">"    # exclude:[/\\.min\\./]     # List of regexes to exclude files when running minification.\n"</span> +
-         <span class="hljs-string">"                               # Any path with \".min.\" in its name, like jquery.min.js, is assumed to\n"</span> +
-         <span class="hljs-string">"                               # already be minified and is ignored by default. Override this property\n"</span> +
-         <span class="hljs-string">"                               # if you have other files that you'd like to exempt from minification."</span>;
-};</pre></div></div>
-            
-        </li>
-        
-        
-        <li id="section-6">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-6">&#182;</a>
-              </div>
               <p>The validate function takes a config object (which is the entire
 mimosa-config) and a validators object which contains several useful
 validation methods. Using custom validation and validation provided
@@ -175,11 +145,11 @@ exports.validate = <span class="hljs-function"><span class="hljs-keyword">functi
         </li>
         
         
-        <li id="section-7">
+        <li id="section-6">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-7">&#182;</a>
+                <a class="pilcrow" href="#section-6">&#182;</a>
               </div>
               <p>The validate function is also an opportunity to do configuration massaging,
 for instance, turning a list of strings into a single RegExp.  Changes

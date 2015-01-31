@@ -19,24 +19,6 @@ exports.defaults = function() {
   };
 };
 
-// The placeholder function should return a string that represents the
-// mimosa-config placeholder for your configuration defaults including
-// explanations for each config setting where appropriate.  The content
-// of the string should be all commented out. If you have no config,
-// the function can be removed or can return null.  This function is called
-// when Mimosa is creating an initial mimosa-config using 'mimosa new' or
-// 'mimosa config'
-
-exports.placeholder = function() {
-  return "\t\n\n"+
-         "  # minify:                    # Configuration for non-require minification/compression via uglify\n" +
-         "                               # using the --minify flag.\n" +
-         "    # exclude:[/\\.min\\./]     # List of regexes to exclude files when running minification.\n" +
-         "                               # Any path with \".min.\" in its name, like jquery.min.js, is assumed to\n" +
-         "                               # already be minified and is ignored by default. Override this property\n" +
-         "                               # if you have other files that you'd like to exempt from minification.";
-};
-
 // The validate function takes a config object (which is the entire
 // mimosa-config) and a validators object which contains several useful
 // validation methods. Using custom validation and validation provided

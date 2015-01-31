@@ -127,7 +127,7 @@ buildExtension, postBuild, add, update, remove, preClean, cleanFile and postClea
 <li>workflow step, a string. A workflow step for the selected workflow types.  For
 example, for the type ‘update’, you might choose to have your module code executed
 ‘afterCompile’, which makes sense for this example.  To help you figure out which
-step you might want to use, visit the <a href="http://mimosa.io/utilities.html">modules</a>
+step you might want to use, visit the <a href="http://mimosa.io/extend.html">Extend</a>
 page on the website.</li>
 <li>The callback function.  The code to be executed during a Mimosa workflow.</li>
 <li>An optional array of extensions upon which to execute the callback. If the file or
@@ -239,8 +239,11 @@ module’s functionality.  That callback is passed the mimosa-config.</li>
 <span class="hljs-keyword">var</span> registerCommand = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(program, retrieveConfig)</span> </span>{
   program.command(<span class="hljs-string">'foo'</span>).description(<span class="hljs-string">"Do something fooey"</span>).action(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> </span>{
 
-    opts.buildFirst = <span class="hljs-literal">false</span>;
-    opts.mdebug = <span class="hljs-literal">false</span>;
+    <span class="hljs-keyword">var</span> opts = {
+      buildFirst: <span class="hljs-literal">false</span>,
+      mdebug: <span class="hljs-literal">false</span>;
+    };
+
     retrieveConfig( opts, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">( mimosaConfig )</span> </span>{</pre></div></div>
             
         </li>
@@ -277,8 +280,6 @@ to access functions that are placed into this exports matching these names:</p>
 <li>registerCommand: This function is called to create a new Mimosa command.</li>
 <li>defaults: This function is called to access the default configuration for your module.
 See <a href="./config.html">config.js</a>.</li>
-<li>placeholder: This function is used to build a mimosa-config during ‘mimosa new’ and
-‘mimosa config’. See <a href="./config.html">config.js</a>.</li>
 <li>validate: This function is called during Mimosa’s startup to validate the mimosa-config.
 This is your module’s opportunity to ensure the configuration it will be given later is
 valid. See <a href="./config.html">config.js</a>.</li>
@@ -293,7 +294,6 @@ multiple modules that need to talk to one another.</p>
   registration: registration,
   registerCommand: registerCommand,
   defaults: config.defaults,
-  placeholder: config.placeholder,
   validate: config.validate
 };</pre></div></div>
             

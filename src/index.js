@@ -32,7 +32,7 @@ var config = require('./config')
 // 2. workflow step, a string. A workflow step for the selected workflow types.  For
 // example, for the type 'update', you might choose to have your module code executed
 // 'afterCompile', which makes sense for this example.  To help you figure out which
-// step you might want to use, visit the <a href="http://mimosa.io/utilities.html">modules</a>
+// step you might want to use, visit the <a href="http://mimosa.io/extend.html">Extend</a>
 // page on the website.
 // 3. The callback function.  The code to be executed during a Mimosa workflow.
 // 4. An optional array of extensions upon which to execute the callback. If the file or
@@ -104,8 +104,11 @@ var _minifyJS = function(mimosaConfig, options, next) {
 var registerCommand = function(program, retrieveConfig) {
   program.command('foo').description("Do something fooey").action(function() {
 
-    opts.buildFirst = false;
-    opts.mdebug = false;
+    var opts = {
+      buildFirst: false,
+      mdebug: false;
+    };
+
     retrieveConfig( opts, function( mimosaConfig ) {
       // Here is where your module's functionality would be executed
     });
@@ -120,9 +123,7 @@ var registerCommand = function(program, retrieveConfig) {
 // 2. registerCommand: This function is called to create a new Mimosa command.
 // 3. defaults: This function is called to access the default configuration for your module.
 // See <a href="./config.html">config.js</a>.
-// 4. placeholder: This function is used to build a mimosa-config during 'mimosa new' and
-// 'mimosa config'. See <a href="./config.html">config.js</a>.
-// 5. validate: This function is called during Mimosa's startup to validate the mimosa-config.
+// 4. validate: This function is called during Mimosa's startup to validate the mimosa-config.
 // This is your module's opportunity to ensure the configuration it will be given later is
 // valid. See <a href="./config.html">config.js</a>.
 //
@@ -133,6 +134,5 @@ module.exports = {
   registration: registration,
   registerCommand: registerCommand,
   defaults: config.defaults,
-  placeholder: config.placeholder,
   validate: config.validate
 };
