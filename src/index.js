@@ -94,25 +94,28 @@ var _minifyJS = function(mimosaConfig, options, next) {
 // 1. program, a commander.js program object, read more here: http://visionmedia.github.com/commander.js/
 // Use this object to create a command, the flags for it, any input values, the help text and the callback
 // for the command.
-// 2. retrieveConfig, a function, use retrieveConfig to have Mimosa execute a build and get the mimosa-config
+// 2. logger, a copy of Mimosa's logger
+// 3. retrieveConfig, a function, use retrieveConfig to have Mimosa execute a build and get the mimosa-config
 // before a module's code is executed.  retrieveConfig takes two parameters, the first is an object to which
 // can include build flags. buildFirst forces Mimosa to run a build before the command is executed.  mdebug
 // will force mimosa to run in debug mode.  You can also pass a run profile via the ops.
 // Ex: opts.profile = "profile-name". The second retrieveConfig parameter is a callback that should contain the
 // module's functionality.  That callback is passed the mimosa-config.
 
-var registerCommand = function(program, retrieveConfig) {
-  program.command('foo').description("Do something fooey").action(function() {
+var registerCommand = function(program, logger, retrieveConfig) {
+  program.command("foo")
+    .description("Do something fooey")
+    .action(function() {
 
-    var opts = {
-      buildFirst: false,
-      mdebug: false;
-    };
+      var opts = {
+        buildFirst: false,
+        mdebug: false;
+      };
 
-    retrieveConfig( opts, function( mimosaConfig ) {
-      // Here is where your module's functionality would be executed
+      retrieveConfig( opts, function( mimosaConfig ) {
+        // Here is where your module's functionality would be executed
+      });
     });
-  });
 };
 
 // The module.exports exposes module code to Mimosa.  The properties that
